@@ -80,7 +80,7 @@ router.post('/', asyncHandler(async(req, res)=>{
             fields.forEach((field, index) => {
                 if (req.files[field] && req.files[field].length > 0) {
                     const file = req.files[field][0];
-                    const imageUrl = `${process.env.HOST}:${process.env.PORT}/public/products/${file.filename}`;
+                    const imageUrl = `${process.env.HOST}/public/products/${file.filename}`;
                     imageUrls.push({ image: index + 1, url: imageUrl });
                 }
             });
@@ -145,7 +145,7 @@ router.put('/:id', asyncHandler(async (req, res) => {
             fields.forEach((field, index) => {
                 if (req.files[field] && req.files[field].length > 0) {
                     const file = req.files[field][0];
-                    const imageUrl = `${process.env.HOST}:${process.env.PORT}/image/products/${file.filename}`;
+                    const imageUrl = `${process.env.HOST}/image/products/${file.filename}`;
                     // Update the specific image URL in the images array
                     let imageEntry = productToUpdate.images.find(img => img.image === (index + 1));
                     if (imageEntry) {

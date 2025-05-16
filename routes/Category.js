@@ -54,7 +54,7 @@ router.post('/', asyncHandler(async(req, res) => {
             const {name} = req.body;
             let imageUrl = '';
             if(req.file){
-                imageUrl = `${process.env.HOST}:${process.env.PORT}/image/category/${req.file.filename}`;
+                imageUrl = `${process.env.HOST}/image/category/${req.file.filename}`;
             }
             console.log('url ', req.file)
 
@@ -101,7 +101,7 @@ router.put('/:id', asyncHandler(async(req, res)=>{
             const {name} = req.body;
             let imageUrl = req.body.image;
             if(req.file){
-                imageUrl = `${process.env.HOST}:${process.env.PORT}/image/category/${req.file.filename}`;
+                imageUrl = `${process.env.HOST}/image/category/${req.file.filename}`;
             }
 
             if(!name || !imageUrl){

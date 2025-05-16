@@ -48,7 +48,7 @@ router.post('/', asyncHandler(async (req, res) => {
             const { posterName } = req.body;
             let imageUrl = 'no_url';
             if (req.file) {
-                imageUrl = `${process.env.HOST}:${process.env.PORT}/image/poster/${req.file.filename}`;
+                imageUrl = `${process.env.HOST}/image/poster/${req.file.filename}`;
             }
 
             if (!posterName) {
@@ -96,7 +96,7 @@ router.put('/:id', asyncHandler(async (req, res) => {
 
 
             if (req.file) {
-                image = `http://localhost:3000/image/poster/${req.file.filename}`;
+                image = `${process.env.HOST}/image/poster/${req.file.filename}`;
             }
 
             if (!posterName || !image) {
