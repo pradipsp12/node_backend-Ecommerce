@@ -53,6 +53,4 @@ app.get('/', asyncHandler(async (req, res)=>{
 
 
 
-app.listen(process.env.PORT || 3000, ()=>{
-  console.log(`Server Running on Port ${process.env.PORT || 3000}`)
-});
+module.exports = app;
