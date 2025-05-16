@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 const multer = require('multer');
 const router = express.Router();
 const Product = require('../models/product.js');
-const { uploadProduct } = require('../uploadFile');
+const { uploadProduct } = require('../UploadFile');
 const dotenv = require('dotenv');
 dotenv.config();
 

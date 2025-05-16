@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Poster = require('../models/poster');
-const { uploadPosters } = require('../uploadFile');
+const { uploadPosters } = require('../UploadFile');
 const multer = require('multer');
 const asyncHandler = require('express-async-handler');
 const dotenv = require('dotenv');

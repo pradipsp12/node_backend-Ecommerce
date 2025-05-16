@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const asyncHandler = require('express-async-handler');
-const { uploadCategory } = require('../uploadFile');
+const { uploadCategory } = require('../UploadFile');
 const multer = require('multer');
 const Category = require('../models/category');
 const subCategory = require('../models/subCategory');
