@@ -5,9 +5,7 @@ const router = express.Router();
 const Product = require('../models/product.js');
 const { uploadProduct } = require('../UploadFile');
 const dotenv = require('dotenv');
-const protocol = req.protocol;
-const host = req.get('host');
-const baseUrl = `${protocol}://${host}`;
+
 dotenv.config();
 
 
@@ -49,6 +47,9 @@ router.get('/:id', asyncHandler(async (req, res) => {
 
 // create a Product
 router.post('/', asyncHandler(async(req, res)=>{
+    const protocol = req.protocol;
+    const host = req.get('host');
+    const baseUrl = `${protocol}://${host}`;
         try {
             uploadProduct.fields([
                 { name: 'image1', maxCount: 1 },
@@ -105,6 +106,9 @@ router.post('/', asyncHandler(async(req, res)=>{
 
 // Update a product
 router.put('/:id', asyncHandler(async (req, res) => {
+      const protocol = req.protocol;
+    const host = req.get('host');
+    const baseUrl = `${protocol}://${host}`;
     const productId = req.params.id;
     try {
         // Execute the Multer middleware to handle file fields

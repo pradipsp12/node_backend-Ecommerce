@@ -5,9 +5,7 @@ const { uploadPosters } = require('../UploadFile');
 const multer = require('multer');
 const asyncHandler = require('express-async-handler');
 const dotenv = require('dotenv');
-const protocol = req.protocol;
-const host = req.get('host');
-const baseUrl = `${protocol}://${host}`;
+
 dotenv.config();
 
 // Get all posters
@@ -36,6 +34,9 @@ router.get('/:id', asyncHandler(async (req, res) => {
 
 // Create a new poster
 router.post('/', asyncHandler(async (req, res) => {
+    const protocol = req.protocol;
+    const host = req.get('host');
+    const baseUrl = `${protocol}://${host}`;
     try {
         uploadPosters.single('img')(req, res, async function (err) {
             if (err instanceof multer.MulterError) {
@@ -80,6 +81,9 @@ router.post('/', asyncHandler(async (req, res) => {
 
 // Update a poster
 router.put('/:id', asyncHandler(async (req, res) => {
+    const protocol = req.protocol;
+    const host = req.get('host');
+    const baseUrl = `${protocol}://${host}`;
     try {
         const categoryID = req.params.id;
         uploadPosters.single('img')(req, res, async function (err) {

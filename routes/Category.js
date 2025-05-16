@@ -7,9 +7,7 @@ const Category = require('../models/category');
 const subCategory = require('../models/subCategory');
 const Product = require('../models/product');
 const dotenv = require('dotenv');
-const protocol = req.protocol;
-const host = req.get('host');
-const baseUrl = `${protocol}://${host}`;
+
 dotenv.config();
 
 
@@ -41,6 +39,9 @@ router.get('/:id', asyncHandler(async(req, res) =>{
 // create a  new category 
 
 router.post('/', asyncHandler(async(req, res) => {
+    const protocol = req.protocol;
+const host = req.get('host');
+const baseUrl = `${protocol}://${host}`;
     try {
         uploadCategory.single('img')(req, res, async function (err) {
             if(err instanceof multer.MulterError){
@@ -87,6 +88,9 @@ router.post('/', asyncHandler(async(req, res) => {
 
 // update category
 router.put('/:id', asyncHandler(async(req, res)=>{
+    const protocol = req.protocol;
+const host = req.get('host');
+const baseUrl = `${protocol}://${host}`;
     const categoryId = req.params.id;
 
     try {
