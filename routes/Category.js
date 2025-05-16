@@ -7,6 +7,9 @@ const Category = require('../models/category');
 const subCategory = require('../models/subCategory');
 const Product = require('../models/product');
 const dotenv = require('dotenv');
+const protocol = req.protocol;
+const host = req.get('host');
+const baseUrl = `${protocol}://${host}`;
 dotenv.config();
 
 
@@ -54,7 +57,7 @@ router.post('/', asyncHandler(async(req, res) => {
             const {name} = req.body;
             let imageUrl = '';
             if(req.file){
-                imageUrl = `${process.env.HOST}/image/category/${req.file.filename}`;
+                imageUrl = `${baseUrl}/image/category/${req.file.filename}`;
             }
             console.log('url ', req.file)
 
@@ -101,7 +104,7 @@ router.put('/:id', asyncHandler(async(req, res)=>{
             const {name} = req.body;
             let imageUrl = req.body.image;
             if(req.file){
-                imageUrl = `${process.env.HOST}/image/category/${req.file.filename}`;
+                imageUrl = `${baseUrl}/image/category/${req.file.filename}`;
             }
 
             if(!name || !imageUrl){

@@ -5,6 +5,9 @@ const { uploadPosters } = require('../UploadFile');
 const multer = require('multer');
 const asyncHandler = require('express-async-handler');
 const dotenv = require('dotenv');
+const protocol = req.protocol;
+const host = req.get('host');
+const baseUrl = `${protocol}://${host}`;
 dotenv.config();
 
 // Get all posters
@@ -48,7 +51,7 @@ router.post('/', asyncHandler(async (req, res) => {
             const { posterName } = req.body;
             let imageUrl = 'no_url';
             if (req.file) {
-                imageUrl = `${process.env.HOST}/image/poster/${req.file.filename}`;
+                imageUrl = `${baseUrl}/image/poster/${req.file.filename}`;
             }
 
             if (!posterName) {
@@ -96,7 +99,7 @@ router.put('/:id', asyncHandler(async (req, res) => {
 
 
             if (req.file) {
-                image = `${process.env.HOST}/image/poster/${req.file.filename}`;
+                image = `${baseUrl}/image/poster/${req.file.filename}`;
             }
 
             if (!posterName || !image) {
